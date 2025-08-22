@@ -1,21 +1,14 @@
 const express = require("express");
 const app = express();
 
-app.use(function (req, res, next) {
-  console.log("Middleware working");
-  next();
-});
+app.set("view engine", "ejs");
 
 app.get("/", function (req, res) {
-  res.send("Hello World");
+  res.render("login", { heading: "Login Page" });
 });
 
-app.get("/profile", function (req, res) {
-  res.send("This page is profile page.");
-});
-
-app.get("/profile/:username", function (req, res) {
-  res.send(`This is form ${req.params.username}`);
+app.get("/site", function (req, res) {
+  res.render("site", { heading: "PhoneHub" });
 });
 
 app.listen(3000);
